@@ -10,7 +10,8 @@
 
 ### 配置
 1. 在 `config/weixin.js` 中配置自己的应用
-#####url
+
+###url
 
 * appid  应用的 id
 * url   页面所在的url
@@ -18,4 +19,14 @@
 
 ```
 http://localhost:1337/api/index/getSign?appid=wxd98888751036c960&url=http://www.baidu.com
+```
+
+### result
+
+```
+{
+    "code": 200,
+    "sign": "8a406f7930b354f82b97d4a75b191aab53fcb8f9"
+}
+
 ```
