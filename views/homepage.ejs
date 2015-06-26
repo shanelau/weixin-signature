@@ -7,27 +7,39 @@
 <body>
 
 你现在可以分享到朋友圈了
-
+<h3 id="menu-share">分享接口</h3>
+<span class="desc">获取“分享到朋友圈”按钮点击状态及自定义分享内容接口</span>
+<button class="btn btn_primary" id="onMenuShareTimeline">onMenuShareTimeline</button>
+<span class="desc">获取“分享给朋友”按钮点击状态及自定义分享内容接口</span>
+<button class="btn btn_primary" id="onMenuShareAppMessage">onMenuShareAppMessage</button>
+<span class="desc">获取“分享到QQ”按钮点击状态及自定义分享内容接口</span>
+<button class="btn btn_primary" id="onMenuShareQQ">onMenuShareQQ</button>
+<span class="desc">获取“分享到腾讯微博”按钮点击状态及自定义分享内容接口</span>
+<button class="btn btn_primary" id="onMenuShareWeibo">onMenuShareWeibo</button>
 
 </body>
 <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 <script>
+  var sign;
   function jsonpCallback(data) {
-    console.log(data);
-    var sign = data.sign;
-    wx.config({
-      debug: true,
-      appId: 'wxd98888751036c960',
-      timestamp: sign.timestamp,
-      nonceStr: sign.nonceStr,
-      signature: sign.signature,
-      jsApiList: [
-        // 所有要调用的 API 都要加到这个列表中
-        'onMenuShareTimeline',
-        'onMenuShareAppMessage',
-        'onMenuShareQQ'
-      ]
-    });
+    sign = data.sign;
+  }
+</script>
+<script type="text/javascript" src="http://localhost:1337/api/sign?appId=wxd98888751036c960&url=http://test.weixin.bigertech.com/&callback=jsonpCallback"></script>
+<script type="text/javascript">
+  wx.config({
+    debug: true,
+    appId: 'wxd98888751036c960',
+    timestamp: sign.timestamp,
+    nonceStr: sign.nonceStr,
+    signature: sign.signature,
+    jsApiList: [
+      // 所有要调用的 API 都要加到这个列表中
+      'onMenuShareTimeline',
+      'onMenuShareAppMessage',
+      'onMenuShareQQ'
+    ]
+  });
 
 
   wx.ready(function () {
@@ -65,9 +77,5 @@
       }
     });
   });
-
-  }
 </script>
-<script type="text/javascript" src="http://localhost:1337/api/sign?appId=wxd98888751036c960&url=http://test.weixin.bigertech.com/&callback=jsonpCallback"></script>
-
 </html>
