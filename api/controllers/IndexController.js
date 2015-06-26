@@ -9,12 +9,12 @@
 
 function getSign(req, res) {
   var url = req.query.url;
-  var appid = req.query.appid;
+  var appId = req.query.appId;
 
-  if (!url || !appid) {
+  if (!url || !appId) {
     return res.badRequest();
   }
-  TokenService.getSign(url, appid).then(function(sign){
+  TokenService.getSign(url, appId).then(function(sign){
     res.jsonp({
       code: 200,
       sign: sign

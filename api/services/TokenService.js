@@ -38,6 +38,7 @@ var getJSToken = function (appid) {
     getAccessToken(appid).then(function(data){
       request(js_token + data.access_token, function (err, res, body) {
         var data = JSON.parse(body);
+        console.log(err, data);
         if (err || data['errcode'] !== 0) {
           return reject(err)
         }
