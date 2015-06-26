@@ -62,8 +62,7 @@ function getSign(url, appid) {
     if (!signs[url] || expireCheck(signs[url]['expire']) ) {
       sails.log('get new sign!');
       getJSToken(appid).then(function(result){
-        console.log( result['ticket']);
-        var signStr = Sign('sM4AOVdWfPE4DxkXGEs8VPz8RdcSyJ55qUhx_jOFlsSncoTQednUjBV_nwRKP79sRePHYSXVEvZevKISvmwN1g', url);
+        var signStr = Sign(result['ticket'], url);
         signs[url] = {
           appid: appid,
           sign: signStr,
