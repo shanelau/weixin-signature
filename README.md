@@ -1,5 +1,9 @@
 # yx-weixin
 
+[微信自定义分享的签名版实现](http://www.jianshu.com/p/83c30322e8e2)
+[demo 请在微信中打开](http://test.weixin.bigertech.com/)
+[demo2 请在微信中打开](http://test.weixin.bigertech.com/api/sign?appId=wxd98888751036c960&url=http://test.weixin.bigertech.com/)
+
 ## 微信签名获取 、weixin、sign、signature
 
 1. 本地缓存
@@ -25,8 +29,14 @@ http://localhost:1337/api/index/getSign?appid=wxd98888751036c960&url=http://www.
 
 ```
 {
-    "code": 200,
-    "sign": "8a406f7930b354f82b97d4a75b191aab53fcb8f9"
+  "code": 200,
+  "sign": {
+    "jsapi_ticket": "sM4AOVdWfPE4DxkXGEs8VPz8RdcSyJ55qUhx_jOFlsSmIYUmF-Vp6hXyVxk9Nkpshn3txTMWGXfvNXRZ3GLvzg",
+    "nonceStr": "d2o7804lrj3piud",
+    "timestamp": "1435377516",
+    "url": "http://test.weixin.bigertech.com/",
+    "signature": "62cab8eb26bcdc2f18834e8983f102defa7205ba"
+  }
 }
 
 ```
