@@ -28,6 +28,63 @@
 ```
 http://localhost:1337/api/index/getSign?appid=wxd98888751036c960&url=http://www.baidu.com
 ```
+前端调用
+
+```
+
+var sign;
+  function jsonpCallback(data) {
+      sign = data.sign;
+      wx.config({
+          debug: false,
+          appId: 'appId',
+          timestamp: sign.timestamp,
+          nonceStr: sign.nonceStr,
+          signature: sign.signature,
+          jsApiList: [
+              // 所有要调用的 API 都要加到这个列表中
+              'onMenuShareTimeline',
+              'onMenuShareAppMessage',
+              'onMenuShareQQ'
+          ]
+      });
+  }
+
+  var str = "http://test.weixin.bigertech.com/api/sign?appId=wxb0def0bc73c04b72&callback=jsonpCallback&url=";
+  var href = encodeURIComponent(window.location.href);
+  var script_elem = document.createElement("script");
+  script_elem.src = str + href;
+  document.body.appendChild(script_elem);
+
+  wx.ready(function(){
+      // 分享到朋友圈
+      wx.onMenuShareTimeline({
+          title: '2016 ⾼考综合试卷原题', // 分享标题
+          link: 'http://event.bigertech.com/gaokao2016', // 分享链接
+          imgUrl: 'http://event.bigertech.com/gaokao2016/img/share.jpg', // 分享图标
+          success: function () {
+              // 用户确认分享后执行的回调函数
+          },
+          cancel: function () {
+              // 用户取消分享后执行的回调函数
+          }
+      });
+      //分享给朋友
+      wx.onMenuShareAppMessage({
+          title: '惊！2016 ⾼考综合试题', // 分享标题
+          desc: '2016 ⾼考题独家揭秘，快来试试你能得⼏分。', // 分享描述
+          link: 'http://event.bigertech.com/gaokao2016', // 分享链接
+          imgUrl: 'http://event.bigertech.com/gaokao2016/img/share.jpg', // 分享图标
+          success: function () {
+              // 用户确认分享后执行的回调函数
+          },
+          cancel: function () {
+              // 用户取消分享后执行的回调函数
+          }
+      });
+  });
+
+```
 
 ### result
 
